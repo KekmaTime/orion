@@ -13,14 +13,22 @@ Orion is a basic integration of Stripe payment processing using a Next.js fronte
 
 2. Install dependencies:
 
-```bash
-cd orion/frontend
-bun install
+   ```bash
+   cd orion/frontend
+   bun install
 
 
-cd orion/backend
-cargo build
-```
+   cd orion/backend
+   cargo build
+   ```
+
+### Setup Environment Variables
+- Create a `.env` file in the `backend` directory with your [Stripe API key](https://dashboard.stripe.com/test/apikeys) and success/failure URLs:
+   ```bash
+   STRIPE_KEY=your_stripe_secret_key
+   SUCCESS_URL=http://localhost:3000/success
+   FAILURE_URL=http://localhost:3000/fail
+   ```
 
 ### Running the Application
 
