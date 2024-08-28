@@ -26,7 +26,7 @@ impl Payment {
             Product::create(&self.client, create_product).await.unwrap()
         };
 
-        let mut create_price = CreatePrice::new(Currency::INR);
+        let mut create_price = CreatePrice::new(Currency::USD);
         create_price.product  = Some(IdOrCreate::Id(&product.id));
         create_price.unit_amount = Some(1000);
         create_price.expand = &["product"];
