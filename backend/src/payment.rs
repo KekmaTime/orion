@@ -41,12 +41,13 @@ impl Payment {
         session.cancel_url = failure_page.as_deref();
         session.success_url = success_page.as_deref();
         session.customer = None;
+        session.mode = Some(stripe::CheckoutSessionMode::Payment);
         session.line_items = Some(vec![CreateCheckoutSessionLineItems{
             quantity: Some(4),
             price: Some(price.id.to_string()),
             ..Default::default()
         }]);
-        session.expand = &["line_item", "line_items.data.price.product"];
+        session.expand = &["line_items.data.price.product"];
 
         let checkout_session = CheckoutSession::create(&self.client, session)
             .await
